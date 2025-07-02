@@ -1,7 +1,5 @@
 # Git Commands CheatSheet
 
----
-
 ## Setup & Configuration
 
 - `git config --global user.name "Your Name"` - Set Git username
