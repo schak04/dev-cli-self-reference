@@ -108,7 +108,7 @@
 - `git push origin <tagname>` - Push a specific tag
 - `git apply <patchfile>` - Apply a patch
 
-### About Force-Pushing
+## About Force-Pushing
 
 Force-pushing overwrites commit history on the remote repository. This can permanently erase commits and disrupt the ability to recover previous work. It is a powerful tool, but should be used with caution.
 
