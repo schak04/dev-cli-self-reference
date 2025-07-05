@@ -159,3 +159,87 @@ Force-pushing overwrites commit history on the remote repository. This can perma
   - New feature: `v1.1.0`
   - Fix: `v1.1.1`
   - Breaking change: `v2.0.0`
+
+## Git LFS (Large File Storage)
+
+Git LFS is an extension for Git that manages large files by storing them outside your main Git repository.
+
+### Installation
+
+**CLI:**
+
+```bash
+# Ubuntu/Debian
+sudo apt install git-lfs
+
+# Windows (via Chocolatey)
+choco install git-lfs
+
+# macOS
+brew install git-lfs
+```
+
+**GUI:**
+
+Download and install from [https://git-lfs.com/](https://git-lfs.com/)
+
+### Initialize Git LFS
+
+Run once per system/user (no matter in which directory, it will always get installed globally):
+
+```bash
+git lfs install
+```
+
+### Track File Types
+
+Run before adding/committing large files:
+
+```bash
+git lfs track file/files
+```
+
+This updates the `.gitattributes` file. Don't forget to commit it:
+
+```bash
+git add .gitattributes
+git commit -m "Track large files with Git LFS"
+```
+
+### Clone or Pull with LFS
+
+`git clone <repo-url>` - Automatically fetches LFS files
+`git pull` - Pulls LFS files if tracked
+
+### Push LFS-Tracked Files
+
+```bash
+git add largefile.extension
+git commit -m "Add largefile.extension with LFS"
+git push
+```
+
+### View Tracked File Types
+
+```bash
+git lfs track
+```
+
+### Untrack File Types
+
+```bash
+git lfs untrack file/files
+git add .gitattributes
+git commit -m "Stop tracking XYZ files with Git LFS"
+```
+
+### Remove LFS Files from History (Advanced)
+
+To clean LFS files from Git history, use tools like:
+
+- [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/)
+- `git filter-branch`
+
+> **Note:** These operations rewrite history. Use with caution.
+
+---
