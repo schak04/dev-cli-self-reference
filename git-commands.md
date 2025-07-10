@@ -43,9 +43,9 @@
 - `git reset <file>` - Unstage specific file
 - `git reset --soft HEAD~1` - Undo last commit, keep staged
 - `git reset --mixed HEAD~1` - Undo commit, unstage changes
-- `git reset --hard HEAD~1` - Undo commit and changes
-- `git reset --hard HEAD~5` - Reset back 5 commits
-- `git reset --hard <commit_hash>` - Reset to a specific commit
+- `git reset --hard HEAD~1` - **CAUTION:** Permanently discards the commit and local changes
+- `git reset --hard HEAD~N` - **CAUTION:** Like above, but resets back **N commits** and discards local changes
+- `git reset --hard <commit_hash>` - **CAUTION:** This discards all changes after that commit
 - `git checkout -- <file>` - Discard changes in a file
 
 ## Viewing History
@@ -63,7 +63,7 @@
 - `git stash pop` - Reapply last stash
 - `git stash list` - List all stashes
 - `git stash drop` - Remove last stash
-- `git clean -fd` - Delete untracked files and directories
+- `git clean -fd` - **CAUTION:** Deletes **untracked** files and directories
 
 ## Remove Tracked Files (Now in .gitignore)
 
@@ -84,11 +84,12 @@
   - Change `pick` to `reword` in editor
   - Save and update messages
   - Then `git push --force`
+  > Rewrites history. Safe for solo branches or repos. Risky on shared ones; coordinate with teammates before use.
 
 ## About Force-Pushing
 
 Force-pushing overwrites the commit history on the remote repository. It is a powerful tool that should be used with caution, especially in shared repositories.  
-While **force-pushing is safe if you are the only developer**, it's still **good practice to use it thoughtfully**.
+While **force-pushing is safe if you're the only developer**, it's still good practice to use it thoughtfully.
 
 ### Best practices
 
@@ -98,7 +99,7 @@ While **force-pushing is safe if you are the only developer**, it's still **good
 ## Disaster Recovery
 
 - `git reflog` - Show history of HEAD changes
-- `git reset --hard <reflog_hash>` - Restore to a previous HEAD state
+- `git reset --hard <reflog_hash>` - Restores old state; overwrites current work
 - `git rev-list --max-parents=0 HEAD` - Get the first commit hash
 - `git checkout --orphan fresh-start` - Start a new history
 - `git branch -D <branch>` - Delete a branch
