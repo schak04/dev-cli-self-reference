@@ -59,11 +59,14 @@
 
 ## Stashing & Cleaning
 
-- `git stash` - Save current changes
-- `git stash pop` - Reapply last stash
+- `git stash` - Save current changes and revert to the last commit
+- `git stash pop` - Reapply the last stash and remove it from the stash list
+- `git stash apply` - Reapply the last stash but keep it in the stash list
 - `git stash list` - List all stashes
 - `git stash drop` - Remove last stash
-- `git clean -fd` - **CAUTION:** Deletes **untracked** files and directories
+- `git stash clear` - **CAUTION:** Deletes all stashes
+- `git clean -fd` - **CAUTION:** Deletes **untracked** files and directories irreversibly
+- `git clean -nfd` - Dry-run (see what would be deleted, without deleting)
 
 ## Remove Tracked Files (Now in .gitignore)
 
